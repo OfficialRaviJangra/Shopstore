@@ -1,0 +1,108 @@
+@import "../scssconfig/mixins.scss";
+
+.snavbar {
+    width: 100%;
+    background-color: #212121;
+    color: white;
+    font-family: sans-serif;
+    z-index: 99;
+
+    .snav-content {
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0px 20px;
+
+        @include md {
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+
+            @include md {
+                font-size: 1.5rem;
+            }
+        }
+
+        .middle>ul {
+            list-style-type: none;
+            display: none;
+            justify-content: center;
+            padding: 0px;
+
+            li {
+                padding: 0 5px;
+                margin: 0 5px;
+                cursor: pointer;
+
+            }
+
+            li:hover {
+                color: rgb(154, 138, 138);
+            }
+
+            @include md {
+                display: flex;
+            }
+        }
+
+        .right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+
+            svg {
+                font-size: 20px;
+                cursor: pointer;
+            }
+
+            svg:hover {
+                color: rgb(154, 138, 138);
+            }
+
+            @include md {
+                font-size: 24px;
+            }
+
+            .cart {
+                position: relative;
+
+                span {
+                    position: absolute;
+                    background-color: rgb(236, 49, 236);
+                    text-align: center;
+                    padding: 2.6px 0px;
+                    border-radius: 10px;
+                    min-width: 20px;
+                    font-size: 12px;
+                    top: -2px;
+                    right: -11px;
+                    line-height: 1;
+                }
+            }
+        }
+    }
+
+    &.sticky-nav {
+        position: sticky;
+        top: 0;
+        transform: translateY(-80px);
+        animation: sticky-nav 0.3s ease forwards;
+    }
+}
+
+@keyframes sticky-nav {
+    0% {
+        transform: translateY(-80px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}

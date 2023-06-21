@@ -1,0 +1,125 @@
+@import "../../scssconfig/mixins.scss";
+
+.search {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 999;
+    background-color: white;
+    animation: searchanimate 0.3s ease forwards;
+
+    .form-field {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        height: 60px;
+        gap: 10px;
+        align-items: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+        input {
+            height: 30px;
+            width: 300px;
+            outline: none;
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            padding: 5px 15px;
+            border-radius: 23px;
+            font-size: 14px;
+
+            @include md {
+                width: 500px;
+                font-size: 16px;
+            }
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.05);
+            }
+        }
+
+        svg {
+            font-size: 40px;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .search-result-content {
+        max-width: calc(100% - 20px);
+        margin: 0 auto;
+
+        @include md {
+            max-width: 800px;
+        }
+
+        .search-results {
+            height: calc(100vh - 60px);
+            overflow: auto;
+            margin: 20px 0;
+
+            .search-item {
+                display: flex;
+                gap: 5px;
+                align-items: center;
+                margin-bottom: 5px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                cursor: pointer;
+
+                .img-container {
+                    height: 50px;
+                    width: 50px;
+                    padding: 5px;
+
+                    img {
+                        width: 100%;
+                        display: block;
+                    }
+                }
+
+                .prod-details {
+                    display: flex;
+                    flex-direction: column;
+                    width: calc(100% - 60px);
+
+                    .name {
+                        font-size: 14px;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+
+                        @include md {
+                            font-size: 16px;
+                        }
+                    }
+
+                    .desc {
+                        font-size: 11px;
+                        opacity: 0.5;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+
+                        @include md {
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes searchanimate {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
